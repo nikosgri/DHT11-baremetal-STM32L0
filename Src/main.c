@@ -1,5 +1,5 @@
 /*
- * gpio.c
+ * main.c
  *
  *  Created on: Jun 8, 2024
  *      Author: Nikolaos Grigoriadis
@@ -10,12 +10,15 @@
 
 #include "stm32l0xx.h"
 #include "stm32l053xx.h"
-
+#include "rcc.h"
 
 
 int main()
 {
+    /*Initialize system clock to 16MHz*/
+	init_system();
 
+	while (1) {}
 
 	return 1;
 }
