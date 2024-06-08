@@ -33,3 +33,55 @@ void init_system(void)
 	/*Update system core clock*/
 	SystemCoreClockUpdate();
 }
+
+
+void delay_ms(int ms)
+{
+	/*Set the reload value*/
+	SysTick->LOAD = 16000 - 1; // Subtrack 1 because we count from 0.
+
+	/*Set the initial value to 0*/
+	SysTick->VAL = 0;
+
+	/*Select internal clock source*/
+	SysTick->CTRL |= SYSTICK_CLK_SRC;
+
+	/*Enable the counter*/
+	SysTick->CTRL |= SYSTICK_ENABLE;
+
+	for (uint32_t i=0; i<ms; i++)
+	{
+        /*Wait until the count flag occurs*/
+		while (!(SysTick->CTRL & SYSTICK_CNT_FLAG)) {}
+	}
+
+	/*Reset control register*/
+	SysTick->CTRL = 0;
+}
+
+
+void delay_us(int us)
+{
+	/*SET THE reload value*/
+	SysTick->LOAD = 16 - 1; // Subtrack by 1 because we count from 0.
+
+	/*Set the initial value to 0*/
+	SysTick->VAL = 0;
+
+	/*Select internal clock source*/
+	SysTick->CTRL |= SYSTICK_CLK_SRC;
+
+	/*Enable the counter*/
+	SysTick->CTRL |= SYSTICK_ENABLE;
+
+	for (uint32_t i=0; i<us; i++)
+	{
+        /*Wait until the count flag occurs*/
+		while (!(SysTick->CTRL & SYSTICK_CNT_FLAG)) {}
+	}
+
+	/*Reset control register*/
+	SysTick->CTRL = 0;
+}
+
+
