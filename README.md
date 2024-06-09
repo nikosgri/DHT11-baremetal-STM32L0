@@ -26,7 +26,7 @@ The DHT11 sensor is a popular temperature and humidity sensor used in various pr
 - USB to UART converter (for serial communication)
 
 ### Circuit Diagram
-![Circuit Diagram](dht11_stm32.png)
+![Circuit Diagram](https://github.com/nikosgri/DHT11-baremetal-STM32L0/blob/main/dth11_stm32.png)
 
 ### Connections
 
