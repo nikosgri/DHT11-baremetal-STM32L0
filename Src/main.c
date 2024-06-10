@@ -3,9 +3,9 @@
  *
  *  Created on: Jun 8, 2024
  *      Author: Nikolaos Grigoriadis
- *		Email : n.grigoriadis09@gmail.com
- *		Title : Embedded software engineer
- * 	 	Degree: BSc and MSc in computer science, university of Ioannina
+ *      Email : n.grigoriadis09@gmail.com
+ *      Title : Embedded software engineer
+ *      Degree: BSc and MSc in computer science, university of Ioannina
  */
 
 #include "stm32l0xx.h"
@@ -26,8 +26,8 @@ int __io_putchar(int ch)
 
 int main()
 {
-	float temperature = 0.0, humidity=0.0;
-	DHT_response_t res = DHT_FAIL;
+    float temperature = 0.0, humidity=0.0;
+    DHT_response_t res = DHT_FAIL;
 
     /*Initialize system clock to 16MHz*/
     init_system();
@@ -36,7 +36,7 @@ int main()
     uart2_init();
 
     /*Enable clock access to GPIO port B*/
-	RCC->IOPENR |= RCC_IOPENR_GPIOBEN;
+    RCC->IOPENR |= RCC_IOPENR_GPIOBEN;
 
 
     while (1)
@@ -49,14 +49,14 @@ int main()
 
     	if (res == DHT_FAIL)
     	{
-    		/*FAIL*/
-    		printf("Error, DHT11 sensor is can't communicate, try again\r\n");
+              /*FAIL*/
+              printf("Error, DHT11 sensor is can't communicate, try again\r\n");
     	} else if (res == DHT_OK)
     	{
-    		/*SUCCESS*/
-    		DHT_get_data(&temperature, &humidity);
-			printf("Temperature: %f\r\n", temperature);
-			printf("Humidity: %f\r\n", humidity);
+              /*SUCCESS*/
+              DHT_get_data(&temperature, &humidity);
+              printf("Temperature: %f\r\n", temperature);
+              printf("Humidity: %f\r\n", humidity);
 
     	}
 
